@@ -1,0 +1,244 @@
+package vue;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class Jeu {
+	JFrame fenetre;
+	JButton[][] jbTab1;
+	JButton[][] jbTab2;
+	String portAvion;
+	String destroyer;
+	String sousMarin;
+	String patrouille;
+
+	public Jeu() {
+		this.jbTab1 = new JButton[10][10];
+		this.jbTab2 = new JButton[10][10];
+
+	}
+
+	public void placerJoueur(int horizontal, int bateau1, int bateau2, int i, String name, Color color) {
+		if (horizontal == 0) {
+			if (bateau2 > 6) {
+				this.jbTab1[bateau1][bateau2 - i].setBackground(color);
+				this.jbTab1[bateau1][bateau2 - i].setName(name);
+			} else {
+				this.jbTab1[bateau1][bateau2 + i].setBackground(color);
+				this.jbTab1[bateau1][bateau2 + i].setName(name);
+			}
+		} else {
+			if (bateau1 > 6) {
+				this.jbTab1[bateau1 - i][bateau2].setBackground(color);
+				this.jbTab1[bateau1 - i][bateau2].setName(name);
+			} else {
+				this.jbTab1[bateau1 + i][bateau2].setBackground(color);
+				this.jbTab1[bateau1 + i][bateau2].setName(name);
+			}
+		}
+	}
+
+	public void placerIA(int horizontal, int bateau1, int bateau2, int i, String name, Color color) {
+		if (horizontal == 0) {
+			if (bateau2 > 6) {
+				this.jbTab2[bateau1][bateau2 - i].setBackground(color);
+				this.jbTab2[bateau1][bateau2 - i].setName(name);
+			} else {
+				this.jbTab2[bateau1][bateau2 + i].setBackground(color);
+				this.jbTab2[bateau1][bateau2 + i].setName(name);
+			}
+		} else {
+			if (bateau1 > 6) {
+				this.jbTab2[bateau1 - i][bateau2].setBackground(color);
+				this.jbTab2[bateau1 - i][bateau2].setName(name);
+			} else {
+				this.jbTab2[bateau1 + i][bateau2].setBackground(color);
+				this.jbTab2[bateau1 + i][bateau2].setName(name);
+			}
+		}
+	}
+
+	public void placer() {
+		// PlacerJoueur
+		int bateau1 = (int) (Math.random() * 10);
+		int bateau2 = (int) (Math.random() * 10);
+		int horizontal = (int) (Math.random() * 2);
+		String name = destroyer;
+		for (int i = 0; i < 3; i++) {
+			this.placerJoueur(horizontal, bateau1, bateau2, i, name, Color.blue);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = patrouille;
+		for (int i = 0; i < 2; i++) {
+			this.placerJoueur(horizontal, bateau1, bateau2, i, name, Color.green);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = portAvion;
+		for (int i = 0; i < 4; i++) {
+			this.placerJoueur(horizontal, bateau1, bateau2, i, name, Color.yellow);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = sousMarin;
+		for (int i = 0; i < 3; i++) {
+			this.placerJoueur(horizontal, bateau1, bateau2, i, name, Color.pink);
+		}
+
+		// PlacerIA
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = destroyer;
+		for (int i = 0; i < 3; i++) {
+			this.placerIA(horizontal, bateau1, bateau2, i, name, Color.blue);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = patrouille;
+		for (int i = 0; i < 2; i++) {
+			this.placerIA(horizontal, bateau1, bateau2, i, name, Color.green);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = portAvion;
+		for (int i = 0; i < 4; i++) {
+			this.placerIA(horizontal, bateau1, bateau2, i, name, Color.yellow);
+		}
+		bateau1 = (int) (Math.random() * 10);
+		bateau2 = (int) (Math.random() * 10);
+		horizontal = (int) (Math.random() * 2);
+		name = sousMarin;
+		for (int i = 0; i < 3; i++) {
+			this.placerIA(horizontal, bateau1, bateau2, i, name, Color.pink);
+		}
+
+	}
+
+	public void grille() {
+
+<<<<<<< HEAD
+=======
+//		JPanel pnl4 = new JPanel();
+//		pnl4.setLayout(new GridLayout(2,1 ));
+		
+		String url = "Title.png";
+		ImageIcon icone = new ImageIcon(url);
+		this.fenetre.add(new JLabel(icone), BorderLayout.CENTER);
+//		pnl4.add
+		
+//		pnl4.add(new JLabel("BIENVENUE DANS BATTLESHIPS"),BorderLayout.SOUTH);
+//		this.fenetre.add(pnl4);
+		//btn.setBounds(40,30,200,40);
+		
+		JLabel pnl3 = new JLabel();
+		pnl3.setLayout(new GridLayout(4, 5));
+		
+		pnl3.add (new JLabel("MENU", SwingConstants.CENTER));
+		
+		//pnl3.add(new JLabel("MENU"), BorderLayout.CENTER);
+		
+		pnl3.add(new JLabel(""), BorderLayout.WEST);
+		
+	    Icon icon = new ImageIcon("boutonReplay.jpg");
+		pnl3.add(new JButton(icon), BorderLayout.WEST);
+		;
+		pnl3.add(new JLabel(""), BorderLayout.NORTH);
+		
+		Icon icon2 = new ImageIcon("imageOptions.png");
+		pnl3.add(new JButton(icon2), BorderLayout.NORTH);
+	
+		pnl3.add(new JLabel(""), BorderLayout.EAST);
+		
+		Icon icon3 = new ImageIcon("imageQuit.png");
+		pnl3.add(new JButton(icon3), BorderLayout.EAST);
+		
+		this.fenetre.add(pnl3);
+		
+		
+>>>>>>> 7dcc48b10983ba3f9aebf14ac815a226a6881c0e
+		JPanel pnl = new JPanel();
+		pnl.setPreferredSize(new Dimension(450, 450));
+		pnl.setLayout(new GridLayout(10, 10));
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				JButton jb = new JButton();
+				pnl.add(this.jbTab1[i][j] = jb);
+			}
+
+		}
+
+		JPanel pnl2 = new JPanel();
+		pnl2.setPreferredSize(new Dimension(450, 450));
+		pnl2.setLayout(new GridLayout(10, 10));
+		for (int i = 0; i < this.jbTab2.length; i++) {
+			for (int j = 0; j < 10; j++) {
+				JButton jb2 = new JButton();
+				pnl2.add(this.jbTab2[i][j] = jb2);
+			}
+		}
+
+		this.fenetre.add(new JLabel(""));
+		this.fenetre.add(pnl);
+	    this.fenetre.add(new JLabel());
+		this.fenetre.add(pnl2);
+
+		this.fenetre.setVisible(true);
+
+	}
+
+	public void demarrer() {
+		this.fenetre = new JFrame("BattleShip");
+		this.fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.fenetre.setSize(800, 700);
+		this.fenetre.setLocation(0, 0);
+
+		this.fenetre.setLayout(new GridLayout(2, 2));
+
+		this.fenetre.add(new JLabel("Info1", SwingConstants.CENTER), BorderLayout.NORTH);
+		this.fenetre.add(new JLabel("Info2", SwingConstants.CENTER), BorderLayout.NORTH);
+		this.fenetre.setVisible(true);
+	}
+	
+	public void ButtonImage() {
+	    Icon icon = new ImageIcon("battleships.png");
+	    JButton btn = new JButton(icon);
+	    btn.setBounds(40,80,200,50);  
+	}
+
+	public void Tutoriel() {
+		
+		System.out.println("					Le but du jeu est de couler tous les bateaux de l'adversaire.					");
+		System.out.println("				Pour cela, chacun votre tour, vous devez essayer de « tirer » sur ses navires en devinant leurs positions.				");
+		System.out.println("			Pour tirer, il suffit cliquer dans la zone adverse puis voir le resultat si tu l'as eu ou pas			");
+		System.out.println("		Si le bateau de votre opposant se trouve à cette position alors il est touché et vous pouvez rejouer.		");
+		System.out.println("	Pour couler le navire, il faut le toucher entièrement.			");
+		System.out.println("C’est-à-dire qu’un bateau prenant 5 cases doit être atteint en ses 5 cases pour être coulé. Le premier à faire detruire tous les ships de l’autre a gagné.");
+	}
+	
+	public static void main(String[] args) {
+		Jeu jeu = new Jeu();
+		jeu.demarrer();
+		jeu.grille();
+		jeu.placer();
+		
+
+	}
+
+}
